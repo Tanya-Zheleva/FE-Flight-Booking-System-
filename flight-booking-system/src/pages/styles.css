@@ -1,0 +1,8 @@
+.main-content {
+    background: white;
+}
+
+.main-content > p {
+    background: white;
+    margin-block: 0px;
+}

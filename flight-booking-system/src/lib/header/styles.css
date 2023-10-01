@@ -3,3 +3,22 @@
     background: lightblue;
     text-align: center;
 }
+
+.page-header {
+    display: flex;
+}
+
+.page-header .profile-icon {
+    flex-grow: 1;
+    margin-left: -55px;
+    margin-top: 15px;
+    font-size: 2em;
+}
+
+.page-header h2 {
+    flex-grow: 30;
+}
+
+.page-header .profile-info {
+    flex-grow: 1;
+}

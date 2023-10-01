@@ -1,5 +1,23 @@
-.page-header {
-    height: 70px;
-    background: lightblue;
+.MuiAppBar-root {
+    height: 60px;
+    background: rgb(241, 138, 155);
     text-align: center;
+}
+
+.page-logo {
+    height: 40;
+    width: 40;
+    font-size: large;
+    align-items: left;
+}
+
+.page-title {
+    height: 40;
+    width: 40;
+    font-size: large;
+    align-items: center;
+}
+
+.page-menu {
+    text-align: right;
 }

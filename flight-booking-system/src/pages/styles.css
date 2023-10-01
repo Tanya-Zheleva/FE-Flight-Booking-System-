@@ -1,8 +1,23 @@
-.main-content {
+.home-page, .sign-in-page, .register-page {
     background: white;
 }
 
 .main-content > p {
     background: white;
     margin-block: 0px;
+}
+
+.sign-in-page main, .register-page main {
+    display: flex;
+    flex-direction: column;
+}
+
+.sign-in-page .register-info {
+    display: flex;
+    transform: translate(42%, 0%);
+}
+
+.sign-in-page h2, .register-page h2, .home-page h2 {
+    text-align: center;
+    font-weight: 400;
 }

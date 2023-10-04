@@ -21,3 +21,22 @@
     text-align: center;
     font-weight: 400;
 }
+
+.profile-page {
+    display: flex;
+    flex-direction: column !important;
+    height: inherit;
+}
+
+.profile-page aside {
+    height: 100%;
+}
+
+.profile-page .ant-layout-has-sider {
+    width: inherit !important;
+    background: white;
+}
+
+.profile-page aside {
+    border-right: 1px solid gray;
+}

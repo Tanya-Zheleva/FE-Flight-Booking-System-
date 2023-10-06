@@ -1,0 +1,22 @@
+.info-row, .documents-container {
+    display: flex;
+    width: fit-content;
+    padding-bottom: 20px;
+}
+
+.info-row .info {
+    width: 200px;
+}
+
+.info-row button {
+    padding: 0px;
+}
+
+.info-container {
+    padding-left: 20px;
+}
+
+.documents-container {
+    width: 520px;
+    justify-content: space-between;
+}

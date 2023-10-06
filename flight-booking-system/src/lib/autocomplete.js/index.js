@@ -1,13 +1,32 @@
-import React from "react"
-import { AutoComplete as AntAutoComplete } from "antd"
+import React, { useState } from "react"
+import { AutoComplete as AntAutoComplete } from "antd";
+import Highlighter from "react-highlight-words";
+import './styles.css';
 
-//TODO: consider using context for options
+const AutoComplete = ({ label, options = [], filterOption }) => {
+    const [searchText, setSearchText] = useState('');
 
-const AutoComplete = ({ label, options }) => {
+    const handleSearch = (value) => {
+        setSearchText(value);
+    };
+
     return (
         <>
             {label}
-            <AntAutoComplete options={options} />
+            <AntAutoComplete options={options} filterOption={filterOption} onSearch={handleSearch}>
+                {options.map(option => {
+                    return (
+                        <AntAutoComplete.Option key={option.id}>
+                        <Highlighter
+                            highlightClassName='highlight'
+                            searchWords={[searchText]}
+                            autoEscape={true}
+                            textToHighlight={option.value}
+                        />
+                        </AntAutoComplete.Option>
+                    );
+                })}
+            </AntAutoComplete>
         </>
     );
 }

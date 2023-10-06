@@ -1,5 +1,24 @@
 .page-header {
     height: 70px;
     background: lightblue;
-    text-align: center;
+    text-align: left;
+}
+
+.page-header {
+    display: flex;
+}
+
+.page-header .profile-icon {
+    flex-grow: 1;
+    margin-left: -30px;
+    margin-top: 20px;
+    font-size: 2em;
+}
+
+.page-header h2 {
+    flex-grow: 50;
+}
+
+.page-header .profile-info {
+    flex-grow: 1;
 }

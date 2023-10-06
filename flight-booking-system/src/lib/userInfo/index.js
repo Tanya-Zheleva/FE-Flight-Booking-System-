@@ -1,6 +1,8 @@
-import { Button } from "antd";
 import React from "react";
+import { Button } from "antd";
 import './styles.css';
+import { CreditCardModal } from "../modals/creditCardModal";
+import { IdentificationDocumentInfoModal } from "../modals/identificationDocumentModal";
 
 const user = { personal_info_id: 4654684564, username: 'pesho', password: '123' };
 const userPersonalInfo = {
@@ -27,6 +29,14 @@ const UserInfo = (props) => {
             <div className="info-row">
                 <span className="info">Phone: {userPersonalInfo.phone_number}</span>
                 <span className="info">Card number: {userPersonalInfo.card_number}</span>
+            </div>
+            <div className="documents-container">
+                <Button onClick={IdentificationDocumentInfoModal}>
+                    View identification document information
+                </Button>
+                <Button onClick={CreditCardModal}>
+                    View creadit card information
+                </Button>
             </div>
         </div>
     );

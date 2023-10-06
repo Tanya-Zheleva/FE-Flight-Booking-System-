@@ -5,7 +5,7 @@ export const useCountryStore = create((set) => {
     return {
         countries: [],
         loadData: async () => {
-            const { data } = await axios('/countries');
+            const { data } = await axios.get('/countries');
 
             set({ countries: data });
         }

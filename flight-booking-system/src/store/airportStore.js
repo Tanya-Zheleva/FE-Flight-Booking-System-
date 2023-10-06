@@ -5,7 +5,7 @@ export const useAirportStore = create((set) => {
     return {
         airports: [],
         loadData: async () => {
-            const { data } = await axios('/airports');
+            const { data } = await axios.get('/airports');
 
             set({ airports: data });
         }

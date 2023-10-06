@@ -5,7 +5,7 @@ export const useCityStore = create((set) => {
     return {
         cities: [],
         loadData: async () => {
-            const { data } = await axios('/cities');
+            const { data } = await axios.get('/cities');
 
             set({ cities: data });
         }

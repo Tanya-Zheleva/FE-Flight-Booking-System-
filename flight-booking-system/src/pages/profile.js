@@ -22,7 +22,7 @@ const MenuTabComponentsByKey = {
 export const ProfilePage = (props) => {
     const [activeKey, setActiveKey] = useState('profile');
 
-    const onMenuClick = ({ item, key, keyPath, domEvent }) => {
+    const onMenuClick = ({ key }) => {
         setActiveKey(key);
     };
 

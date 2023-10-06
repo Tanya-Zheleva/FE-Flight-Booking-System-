@@ -1,4 +1,4 @@
-.info-row {
+.info-row, .documents-container {
     display: flex;
     width: fit-content;
     padding-bottom: 20px;
@@ -14,4 +14,9 @@
 
 .info-container {
     padding-left: 20px;
+}
+
+.documents-container {
+    width: 520px;
+    justify-content: space-between;
 }

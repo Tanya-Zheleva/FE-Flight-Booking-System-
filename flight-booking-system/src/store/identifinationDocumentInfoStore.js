@@ -3,11 +3,11 @@ import { create } from 'zustand';
 
 export const useIdentificationDocumentInfoStore = create((set) => {
     return {
-        creditCards: [],
+        documentInfo: [],
         loadData: async (id) => {
             const { data } = await axios.get('/identificationDocument', { params: { identificationNumber: id } });
 
-            set({ creditCards: data });
+            set({ documentInfo: data });
         }
     };
 });

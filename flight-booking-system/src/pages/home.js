@@ -9,7 +9,7 @@ import { useNavigate } from "react-router";
 export const HomePage = (props) => {
     const navigate = useNavigate();
 
-    const onSignInClick = () => navigate('/sign-in');
+    const onSignInClick = () => navigate('/login');
 
     return (
         <Layout className="home-page">

@@ -2,3 +2,7 @@
     width: 200px;
     margin: 0px 7px;
 }
+
+.autocomplete .ant-form-item-control {
+    width: 200px;
+}

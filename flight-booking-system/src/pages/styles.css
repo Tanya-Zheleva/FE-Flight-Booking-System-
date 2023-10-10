@@ -2,6 +2,10 @@
     background: white;
 }
 
+.sign-in-page, .register-page {
+    height: -webkit-fill-available;
+}
+
 .main-content > p {
     background: white;
     margin-block: 0px;

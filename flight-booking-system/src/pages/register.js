@@ -2,8 +2,7 @@ import React from "react";
 import PageHeader from "../lib/header";
 import PageFooter from "../lib/footer";
 import './styles.css';
-import { Button, Input, Layout } from "antd";
-import { useNavigate } from "react-router";
+import { Layout } from "antd";
 import RegisterForm from "../lib/registerForm";
 
 export const RegisterPage = (props) => {

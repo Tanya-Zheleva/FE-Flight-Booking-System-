@@ -1,12 +1,10 @@
 import React from "react";
 import './styles.css';
-import { Form, Button, Input } from 'antd'
-
-const formConfig = {
-    labelCol: { span: 8 },
-    wrapperCol: { span: 16 },
-    style: { width: 600 }
-};
+import { Form, Input } from 'antd';
+import { commonFormConfig, emailFieldValidationRules, passwordValidationRules } from '../../configurations';
+import SubmitButton from "../submitButton";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const buttonConfig = {
     wrapperCol: {
@@ -16,21 +14,34 @@ const buttonConfig = {
 };
 
 const LoginForm = (props) => {
-    const onSubmit = (args) => {
-        console.log(args);
+    const navigate = useNavigate();
+    const [form] = Form.useForm();
+
+    const onSubmit = () => {
+        const fieldsValues = form.getFieldsValue();
+
+        axios.post('/login', fieldsValues)
+            .then((response) => {
+                console.log(response);
+
+                navigate('/');
+            })
+            .catch(error => {
+                console.log(error);
+            });
     };
 
     return (
         <div className="login-form-container">
-            <Form {...formConfig}>
-                <Form.Item label="Email" required>
+            <Form {...commonFormConfig} form={form}>
+                <Form.Item name="username" label="Email" rules={emailFieldValidationRules}>
                     <Input />
                 </Form.Item>
-                <Form.Item label="Password" required>
-                    <Input />
+                <Form.Item name="password" label="Password" rules={passwordValidationRules}>
+                    <Input.Password />
                 </Form.Item>
                 <Form.Item {...buttonConfig}>
-                    <Button>Submit</Button>
+                    <SubmitButton form={form} onClick={onSubmit} />
                 </Form.Item>
             </Form>
         </div>

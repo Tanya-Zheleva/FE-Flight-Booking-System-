@@ -16,8 +16,6 @@ const PlaneSvg = ({ onClick }) => (
 
 const PageHeader = (props) => {
     const navigate = useNavigate();
-
-    const onProfileClick = () => navigate('/profile');
     const navigateHome = () => navigate('/');
 
     return (
@@ -26,7 +24,8 @@ const PageHeader = (props) => {
             <h2 onClick={navigateHome}>NBU Airlines</h2>
             <div className="profile-info">
                 <UserOutlined className="profile-icon" />
-                <Button onClick={onProfileClick} type="link">Profile</Button>
+                <Button href="/profile" type="link">Profile</Button>
+                <Button href="/login">Sign in / Logout</Button>
             </div>
         </Layout.Header>
     )

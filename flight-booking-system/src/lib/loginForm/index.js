@@ -1,16 +1,10 @@
 import React from "react";
 import './styles.css';
 import { Form, Input } from 'antd';
-import { emailFieldValidationRules, passwordValidationRules } from '../../configurations';
+import { commonFormConfig, emailFieldValidationRules, passwordValidationRules } from '../../configurations';
 import SubmitButton from "../submitButton";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
-const formConfig = {
-    labelCol: { span: 8 },
-    wrapperCol: { span: 16 },
-    style: { width: 600 }
-};
 
 const buttonConfig = {
     wrapperCol: {
@@ -39,7 +33,7 @@ const LoginForm = (props) => {
 
     return (
         <div className="login-form-container">
-            <Form {...formConfig} form={form}>
+            <Form {...commonFormConfig} form={form}>
                 <Form.Item name="username" label="Email" rules={emailFieldValidationRules}>
                     <Input />
                 </Form.Item>

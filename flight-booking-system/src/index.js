@@ -7,6 +7,7 @@ import { Route, BrowserRouter , Routes } from 'react-router-dom';
 import { SignInPage } from './pages/login';
 import { RegisterPage } from './pages/register';
 import { ProfilePage } from './pages/profile';
+import { ErrorPage } from './pages/error';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -18,6 +19,7 @@ root.render(
                 <Route path='/login' element={<SignInPage />} />
                 <Route path='/register' element={<RegisterPage />} />
                 <Route path='/profile' element={<ProfilePage />} />
+                <Route path='*' element={<ErrorPage />}/>
             </Routes>
         </BrowserRouter >
     </React.StrictMode>

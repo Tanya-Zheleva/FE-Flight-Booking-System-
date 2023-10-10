@@ -1,0 +1,11 @@
+.flights-container {
+    position: relative;
+    padding-left: 100px;
+}
+
+.flight-row {
+    padding-top: 20px;
+    width: 50%;;
+    display: flex;
+    align-items: center;
+}

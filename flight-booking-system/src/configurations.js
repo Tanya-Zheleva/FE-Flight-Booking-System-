@@ -40,3 +40,9 @@ export const nameValidationRules = [
         message: 'Please input your name!'
     }
 ]
+
+export const commonFormConfig = {
+    labelCol: { span: 8 },
+    wrapperCol: { span: 16 },
+    style: { width: 600 }
+};

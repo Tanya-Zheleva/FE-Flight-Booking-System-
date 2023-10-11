@@ -1,0 +1,7 @@
+.seat-picker {
+    display: flex;
+}
+
+.seat-picker .ant-select {
+    width: 55px;
+}

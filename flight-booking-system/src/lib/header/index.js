@@ -3,6 +3,7 @@ import './styles.css';
 import { Button, Layout } from "antd";
 import { UserOutlined } from '@ant-design/icons';
 import { useNavigate } from "react-router";
+import { useUserStore } from "../../store/userStore";
 
 const PlaneSvg = ({ onClick }) => (
     <span onClick={onClick} className="profile-icon">
@@ -18,14 +19,26 @@ const PageHeader = (props) => {
     const navigate = useNavigate();
     const navigateHome = () => navigate('/');
 
+    const { activeUser, setActiveUser } = useUserStore();
+
+    const onLogout = () => {
+        setActiveUser(null);
+
+        navigate('/');
+    };
+
     return (
         <Layout.Header className="page-header">
             <PlaneSvg onClick={navigateHome} />
             <h2 onClick={navigateHome}>NBU Airlines</h2>
             <div className="profile-info">
                 <UserOutlined className="profile-icon" />
-                <Button href="/profile" type="link">Profile</Button>
-                <Button href="/login">Sign in / Logout</Button>
+                {true && <Button href="/profile" type="link">Profile</Button>}
+                {
+                    false
+                        ? <Button onClick={onLogout}>Logout</Button>
+                        : <Button href="/login">Login</Button>
+                }
             </div>
         </Layout.Header>
     )

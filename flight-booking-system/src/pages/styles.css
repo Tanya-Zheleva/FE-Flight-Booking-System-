@@ -1,8 +1,8 @@
-.home-page, .sign-in-page, .register-page, .profile-page {
+.home-page, .sign-in-page, .register-page, .profile-page, .book-flight-page {
     background: white;
 }
 
-.sign-in-page, .register-page {
+.sign-in-page, .register-page, .book-flight-page {
     height: -webkit-fill-available;
 }
 
@@ -21,7 +21,7 @@
     transform: translate(42%, 0%);
 }
 
-.sign-in-page h2, .register-page h2, .home-page h2, .profile-page h2 {
+.sign-in-page h2, .register-page h2, .home-page h2, .profile-page h2, .book-flight-page h2 {
     text-align: center;
     font-weight: 400;
 }

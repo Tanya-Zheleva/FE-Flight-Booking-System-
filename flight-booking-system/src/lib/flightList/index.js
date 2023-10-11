@@ -1,7 +1,18 @@
 import { useEffect } from "react";
 import { useFlightsStore } from "../../store/flightsStore";
-import { Card, Col, Divider, Row } from "antd";
+import { Button, Card, Col, Divider, Row } from "antd";
 import './styles.css';
+import dayjs from "dayjs";
+import { useNavigate } from "react-router-dom";
+
+const CardTitle = ({ info, time })  => {
+    return (
+        <>
+            <p>{info}</p>
+            <p>{time}</p>
+        </>
+    );
+};
 
 const getHoursMinutesDifference = (startDate, endDate) => {
     // Calculate the time difference in milliseconds
@@ -16,11 +27,13 @@ const getHoursMinutesDifference = (startDate, endDate) => {
     const minutesString = minutes > 0 ? `${minutes} ${minutes === 1 ? 'minute' : 'minutes'}` : '';
     // Combine hours and minutes into a single string
     const differenceString = `${hoursString} ${minutesString}`.trim();
+
     return differenceString;
 }
 
 const FlightList = (props) => {
     const flightsStore = useFlightsStore();
+    const navigate = useNavigate();
 
     useEffect(() => {
         flightsStore.loadData();
@@ -28,8 +41,14 @@ const FlightList = (props) => {
 
     const { flights } = flightsStore;
 
+    const onFlightBook = (flight) => {
+        flightsStore.setActiveFlightBooking(flight);
+
+        navigate('/book-flight');
+    }
+
     const displayedFlights = flights.map(flight => {
-        const { departureAirport, departureTime, arrivalAirport, arrivalTime, flightStatus, flightNumber } = flight;
+        const { departureAirport, departureTime, arrivalAirport, arrivalTime, flightStatus, flightNumber, startingPrice } = flight;
 
         const { code: departureCode, name: departureName } = departureAirport;
         const { code: arrivalCode, name: arrivalName } = arrivalAirport;
@@ -37,31 +56,43 @@ const FlightList = (props) => {
         const departureDate = new Date(departureTime);
         const arrivalDate = new Date(arrivalTime);
 
+        const departureCardTitle = <CardTitle info={`${departureCode} ${departureName}`} time={dayjs(departureDate).format("HH:mm")} />
+        const arrivalCardTitle = <CardTitle info={`${arrivalCode} ${arrivalName}`} time={dayjs(arrivalDate).format("HH:mm")} />
+
         return (
             <Row className="flight-row">
-                <Col span={6}>
-                    <Card title={`${departureCode} ${departureName}`} bordered={false}>
-                        {departureDate.toDateString()}
-                    </Card>
+                <Col span={23} className="flight-info">
+                    <Col span={6}>
+                        <Card title={departureCardTitle} bordered>
+                            {departureDate.toDateString()}
+                        </Card>
+                    </Col>
+                    <Col span={12}>
+                        <Divider>
+                            Duration: {getHoursMinutesDifference(departureDate, arrivalDate)}
+                        </Divider>
+                        <Divider>
+                            Flight number: {flightNumber}
+                        </Divider>
+                        <Divider>
+                            Status: {flightStatus.toLowerCase()}
+                        </Divider>
+                        <Divider>
+                            Starting from: {startingPrice}$
+                        </Divider>
+                    </Col>
+                    <Col span={6}>
+                        <Card title={arrivalCardTitle} bordered>
+                            {arrivalDate.toDateString()}
+                        </Card>
+                    </Col>
                 </Col>
-                <Col span={12}>
-                    <Divider>
-                        Duration: {getHoursMinutesDifference(departureDate, arrivalDate)}
-                    </Divider>
-                    <Divider>
-                        Flight number: {flightNumber}
-                    </Divider>
-                    <Divider>
-                        Status: {flightStatus.toLowerCase()}
-                    </Divider>
-                </Col>
-                <Col span={6}>
-                    <Card title={`${arrivalCode} ${arrivalName}`} bordered={true}>
-                        {arrivalDate.toDateString()}
-                    </Card>
+                <Col span={1}>
+                    <Button onClick={() => onFlightBook(flight)}>
+                        Book flight
+                    </Button>
                 </Col>
             </Row>
-            //Add return time if the flight is two way
         )
     });
 

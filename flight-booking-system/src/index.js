@@ -23,8 +23,8 @@ const FlightBookingSystem = () => {
                     <Route path='/' element={<HomePage />} />
                     <Route path='/login' element={<SignInPage />} />
                     <Route path='/register' element={<RegisterPage />} />
-                    <Route path='/profile' element={true ? <ProfilePage /> : <ErrorPage />} />
-                    <Route path='/book-flight' element={true ? <BookFlightPage /> : <ErrorPage />} />
+                    <Route path='/profile' element={true ? <ProfilePage /> : <SignInPage />} />
+                    <Route path='/book-flight' element={true ? <BookFlightPage /> : <SignInPage />} />
                     <Route path='*' element={<ErrorPage />}/>
                 </Routes>
             </BrowserRouter >

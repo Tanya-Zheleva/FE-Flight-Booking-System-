@@ -5,7 +5,6 @@ import { Layout } from "antd";
 const PageFooter = (props) => {
     return (
         <Layout.Footer className="page-footer">
-            Footer placeholder
         </Layout.Footer>
     )
 }

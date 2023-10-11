@@ -4,8 +4,20 @@
 }
 
 .flight-row {
-    padding-top: 20px;
+    padding: 25px;
     width: 50%;;
     display: flex;
     align-items: center;
+}
+
+.flight-row a {
+    margin-left: 50px;
+}
+
+.flight-row .ant-card-head-title {
+    text-align: center;
+}
+
+.flight-info {
+    display: flex;
 }

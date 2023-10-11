@@ -29,10 +29,10 @@ const FlightPicker = (props) => {
     const [form] = Form.useForm();
 
     const onSubmit = () => {
-        const fieldsValues = form.getFieldsValue();
+        const fieldsValues = form.getFieldsValue(['from', 'to']);
         
         //TODO: pass values to load
-        flightsStore.loadData();
+        flightsStore.searchFlights(fieldsValues);
     };
     
     return (
@@ -44,7 +44,7 @@ const FlightPicker = (props) => {
                 <AutoComplete options={options} filterOption />
             </Form.Item>
             <Form.Item name="dateRange" label="Dates">
-                <DatePicker.RangePicker />
+                <DatePicker />
             </Form.Item>
             <Form.Item>
                 <SubmitButton form={form} onClick={onSubmit} />

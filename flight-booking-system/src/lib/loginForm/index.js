@@ -5,6 +5,7 @@ import { commonFormConfig, emailFieldValidationRules, passwordValidationRules } 
 import SubmitButton from "../submitButton";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useUserStore } from "../../store/userStore";
 
 const buttonConfig = {
     wrapperCol: {
@@ -15,19 +16,20 @@ const buttonConfig = {
 
 const LoginForm = (props) => {
     const navigate = useNavigate();
+    const { setActiveUser } = useUserStore();
     const [form] = Form.useForm();
 
     const onSubmit = () => {
         const fieldsValues = form.getFieldsValue();
 
         axios.post('/login', fieldsValues)
-            .then((response) => {
-                console.log(response);
+            .then(() => {
+                setActiveUser(fieldsValues)
 
                 navigate('/');
             })
             .catch(error => {
-                console.log(error);
+                alert(error);
             });
     };
 
